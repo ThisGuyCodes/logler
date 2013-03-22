@@ -6,7 +6,7 @@ import (
 )
 
 type Logger struct {
-	Logger    *log.Logger
+	logger    *log.Logger
 	levelChan chan uint8
 	getChan   chan uint8
 	level     uint8
@@ -37,7 +37,7 @@ func (l *Logger) levelGo() {
 
 func New(out io.Writer, prefix string, flag int, level int) *Logger {
 	logger := &Logger{}
-	logger.Logger = log.New(out, prefix, flag)
+	logger.logger = log.New(out, prefix, flag)
 	logger.Set(level)
 	return logger
 }
